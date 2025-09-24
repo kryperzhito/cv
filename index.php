@@ -1,0 +1,216 @@
+<?php
+// ---- Formulario de contacto en PHP ----
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nombre = htmlspecialchars($_POST['nombre']);
+    $correo = htmlspecialchars($_POST['correo']);
+    $mensaje = htmlspecialchars($_POST['mensaje']);
+
+    $destinatario = "hectorgj260@gmail.com"; // Tu correo
+    $asunto = "Contacto desde CV Web";
+    $contenido = "Nombre: $nombre\nCorreo: $correo\nMensaje:\n$mensaje";
+
+    // Envía el correo
+    if (mail($destinatario, $asunto, $contenido)) {
+        $alerta = "✅ Mensaje enviado correctamente.";
+    } else {
+        $alerta = "❌ Error al enviar el mensaje. Intenta más tarde.";
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Héctor García Jaimes</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        header {
+            background: linear-gradient(90deg, #004080, #007bff);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.8rem;
+        }
+        header h2 {
+            font-weight: 300;
+        }
+        section {
+            padding: 60px 20px;
+        }
+        .skill-bar {
+            background: #e9ecef;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .skill-level {
+            height: 20px;
+            background: #007bff;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
+        footer {
+            background: #004080;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <h1>Héctor García Jaimes</h1>
+    <h2>Lic. en Sistemas Computacionales | Programador Web</h2>
+</header>
+
+<!-- Perfil Profesional -->
+<section id="perfil" class="container">
+    <h3><i class="fa-solid fa-user"></i> Perfil Profesional</h3>
+    <p>
+        Programador especializado en desarrollo web y aplicaciones web con experiencia en análisis contable 
+        y optimización de procesos administrativos. Mi motivación es coadyuvar a personas y entidades a 
+        mejorar sus actividades personales y profesionales mediante soluciones tecnológicas eficientes.
+    </p>
+</section>
+
+<!-- Experiencia -->
+<section id="experiencia" class="bg-light">
+    <div class="container">
+        <h3><i class="fa-solid fa-briefcase"></i> Experiencia Laboral</h3>
+        <ul>
+            <li><strong>Analista Contable – Gobierno del Estado de Guerrero</strong> (2009 – Actualidad)<br>
+                Desarrollo de sistemas internos para automatización de procesos, manejo de bases de datos 
+                y control administrativo.</li>
+            <li><strong>Programador Freelance</strong> (2010 – Actualidad)<br>
+                Desarrollo de sistemas POS, sistemas de restaurantes, sistemas de ópticas, 
+                blogs, páginas de presentación y aplicaciones tipo Netflix.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Proyectos -->
+<section id="proyectos" class="container">
+    <h3><i class="fa-solid fa-laptop-code"></i> Proyectos Destacados</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Sistema POS</h5>
+                    <p class="card-text">Gestión de ventas, inventario y roles de usuario.</p>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#posModal">Ver más</button>
+                </div>
+            </div>
+        </div>
+        <!-- Más tarjetas -->
+    </div>
+</section>
+
+<!-- Modal ejemplo -->
+<div class="modal fade" id="posModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sistema POS</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        Sistema completo de punto de venta con manejo de inventario, clientes, usuarios y reportes contables.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Habilidades -->
+<section id="habilidades" class="bg-light">
+    <div class="container">
+        <h3><i class="fa-solid fa-code"></i> Habilidades Técnicas</h3>
+        <p>HTML</p>
+        <div class="skill-bar"><div class="skill-level" style="width:90%"></div></div>
+        <p>PHP</p>
+        <div class="skill-bar"><div class="skill-level" style="width:85%"></div></div>
+        <p>JavaScript</p>
+        <div class="skill-bar"><div class="skill-level" style="width:75%"></div></div>
+        <p>SQL / MySQL</p>
+        <div class="skill-bar"><div class="skill-level" style="width:80%"></div></div>
+
+        <h3 class="mt-4"><i class="fa-solid fa-people-group"></i> Habilidades Blandas</h3>
+        <ul>
+            <li>Liderazgo</li>
+            <li>Comunicación efectiva</li>
+            <li>Trabajo en equipo</li>
+            <li>Resolución de problemas</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Educación -->
+<section id="educacion" class="container">
+    <h3><i class="fa-solid fa-graduation-cap"></i> Educación</h3>
+    <p>Licenciatura en Sistemas Computacionales</p>
+</section>
+
+<!-- Idiomas -->
+<section id="idiomas" class="bg-light">
+    <div class="container">
+        <h3><i class="fa-solid fa-language"></i> Idiomas</h3>
+        <ul>
+            <li>Español: Nativo</li>
+            <li>Inglés hablado: Básico</li>
+            <li>Inglés escrito: Intermedio</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Contacto -->
+<section id="contacto" class="container">
+    <h3><i class="fa-solid fa-envelope"></i> Contacto</h3>
+    <?php if (!empty($alerta)) echo "<div class='alert alert-info'>$alerta</div>"; ?>
+    <form method="post">
+        <div class="mb-3">
+            <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required>
+        </div>
+        <div class="mb-3">
+            <input type="email" name="correo" class="form-control" placeholder="Tu correo" required>
+        </div>
+        <div class="mb-3">
+            <textarea name="mensaje" class="form-control" rows="4" placeholder="Tu mensaje" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Enviar</button>
+    </form>
+    <a href="javascript:window.print()" class="btn btn-outline-secondary mt-3"><i class="fa-solid fa-file-pdf"></i> Descargar PDF</a>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; <?php echo date("Y"); ?> Héctor García Jaimes - CV Online</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Animaciones con JS -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll("section");
+        sections.forEach(sec => {
+            sec.style.opacity = 0;
+            sec.style.transition = "opacity 1s ease-in";
+            setTimeout(() => sec.style.opacity = 1, 300);
+        });
+    });
+</script>
+</body>
+</html>
